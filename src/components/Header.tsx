@@ -70,12 +70,18 @@ const FAKE_ROUTES = [
 interface Props {}
 export const Header: React.FC<Props> = () => {
   return (
-    <div className=" bg-red-200 w-full h-20 flex-shrink-0 flex">
-      <div className=" text-2xl w-40 flex-shrink-0">APS-Web</div>
-      <div className=" flex-1">
+    <div className="bg-[#0f1c29] w-full h-28 flex-shrink-0 flex shadow-black shadow-md z-10 rounded-xl">
+      <div className="text-[#c8c5be] text-4xl w-44 flex-shrink-0 font-bold flex items-center justify-center">
+        A P S
+        <span className=" text-sm translate-y-2 pl-2"> WEB</span>
+      </div>
+      <div className="flex-1 flex flex-col">
         <HorizontalMenu routes={FAKE_ROUTES} />
       </div>
-      <div className=" bg-green-300 w-40 flex-shrink-0">主题切换区</div>
+      <div className="w-40 flex-shrink-0 flex justify-center items-center">
+        <div className="h-7 w-7 rounded-full bg-slate-50 mr-7" />
+        <div className="h-7 w-7 rounded-full bg-slate-500" />
+      </div>
     </div>
   )
 }
