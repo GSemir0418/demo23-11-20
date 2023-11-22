@@ -34,24 +34,21 @@ export const HorizontalMenu: React.FC<HorizontalMenuProps> = ({ routes, fold, un
           )
         })}
       </div>
-      {!fold
-      && (
-        <div className="flex-1 text-[#c8c5be] p-1 flex items-center flex-row">
-          {selectedRoute && selectedRoute.children?.map((route, index) => {
-            return (
-              <Link
-                onClick={() => { handleChildClick(route.label) }}
-                className={`mr-7 p-1 rounded-md flex flex-col justify-center items-center cursor-pointer text-center text-xs mt-1 ${route.label === currentRoute && 'bg-[#414141] text-[#6394d9] shadow-lg'}`}
-                to={`${selectedRoute.path}/${route.path}`}
-                key={index}
-              >
-                <Icons index={index} />
-                <span className="pt-1">{route.label}</span>
-              </Link>
-            )
-          })}
-        </div>
-      )}
+      <div className={`flex-1 text-[#c8c5be] p-1 flex items-center flex-row transition-all duration-200 ease-in-out ${!fold ? 'opacity-100' : 'opacity-0'}`}>
+        {selectedRoute && selectedRoute.children?.map((route, index) => {
+          return (
+            <Link
+              onClick={() => { handleChildClick(route.label) }}
+              className={`mr-7 p-1 rounded-md flex flex-col justify-center items-center cursor-pointer text-center text-xs mt-1 ${route.label === currentRoute && 'bg-[#414141] text-[#6394d9] shadow-lg'}`}
+              to={`${selectedRoute.path}/${route.path}`}
+              key={index}
+            >
+              <Icons index={index} />
+              <span className="pt-1">{route.label}</span>
+            </Link>
+          )
+        })}
+      </div>
     </>
   )
 }

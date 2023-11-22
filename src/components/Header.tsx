@@ -75,7 +75,7 @@ export const Header: React.FC<Props> = () => {
     setFold(!fold)
   }
   return (
-    <div className={`bg-[#0f1c29] w-full h-${fold ? 12 : 28} flex-shrink-0 flex shadow-black shadow-md z-10 rounded-xl relative`}>
+    <div className={`bg-[#0f1c29] transition-all duration-300 ease-in-out w-full h-${fold ? 12 : 28} flex-shrink-0 flex shadow-black shadow-md z-10 rounded-xl relative`}>
       <div className="text-[#c8c5be] text-4xl w-44 flex-shrink-0 font-bold flex items-center justify-center">
         A P S
         <span className=" text-sm translate-y-2 pl-2"> WEB</span>
@@ -89,8 +89,8 @@ export const Header: React.FC<Props> = () => {
       </div>
       <div className=" absolute right-1 bottom-1 cursor-pointer" onClick={toggleFold}>
         {fold
-          ? <FaAngleDown size="1.5rem" fill="#c8c5be" />
-          : <FaAngleUp size="1.5rem" fill="#c8c5be" />}
+          ? <FaAngleDown size="1.5rem" fill="#707070" />
+          : <FaAngleUp size="1.5rem" fill="#707070" />}
       </div>
     </div>
   )

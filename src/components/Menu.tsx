@@ -9,6 +9,7 @@ export interface Route {
 }
 interface MenuProps {
   routes: Route[]
+  fold: boolean
 }
 interface MenuItemProps {
   item: Route
@@ -54,11 +55,11 @@ const MenuItem: React.FC<MenuItemProps> = ({ currentRoute, setCurrentRoute, item
   )
 }
 
-export const Menu: React.FC<MenuProps> = ({ routes }) => {
+export const Menu: React.FC<MenuProps> = ({ routes, fold }) => {
   const [currentRoute, setCurrentRoute] = useState<string>('')
 
   return (
-    <ul>
+    <ul className={`transition-all duration-300 ease-in-out ${fold ? 'opacity-100' : 'opacity-0'}`}>
       {routes.map((route, index) => (<MenuItem key={index} item={route} level={0} father={route.path} currentRoute={currentRoute} setCurrentRoute={setCurrentRoute} />
       ))}
     </ul>

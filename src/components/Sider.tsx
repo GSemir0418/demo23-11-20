@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
 import { Menu } from './Menu'
 import { routes } from '@/router/router'
 
 interface Props {}
 export const Sider: React.FC<Props> = () => {
+  const [fold, setFold] = useState(false)
+  const toggleFold = () => {
+    setFold(!fold)
+  }
   return (
-    <div className="bg-[#242525] text-[#c8c5be] w-44 h-full max-h-screen -mb-28 sm:block hidden overflow-scroll p-2">
-      <Menu routes={routes[0].children} />
+    <div className={`bg-[#242525] text-[#c8c5be] shadow-[#707070] transition-all duration-300 ease-in-out w-${fold ? 44 : 10} h-full max-h-screen -mb-28 overflow-scroll p-2 relative`}>
+      <Menu routes={routes[0].children} fold={fold} />
+      <div onClick={toggleFold} className=" absolute bottom-1 bg-[#242525]">
+        {fold
+          ? <FaAngleLeft size="1.5rem" fill="#707070" />
+          : <FaAngleRight size="1.5rem" fill="#707070" />}
+      </div>
     </div>
   )
 }
