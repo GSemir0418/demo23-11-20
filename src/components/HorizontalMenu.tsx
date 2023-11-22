@@ -5,12 +5,15 @@ import { Icons } from './Icons'
 
 interface HorizontalMenuProps {
   routes: Route[]
+  fold: boolean
+  unfold: () => void
 }
 
-export const HorizontalMenu: React.FC<HorizontalMenuProps> = ({ routes }) => {
+export const HorizontalMenu: React.FC<HorizontalMenuProps> = ({ routes, fold, unfold }) => {
   const [selectedRoute, setSelectedRoute] = useState<Route | null>(null)
   const [currentRoute, setCurrentRoute] = useState<string>('')
   const handleClick = (item: Route) => {
+    unfold()
     setSelectedRoute(item.children ? item : null)
   }
   const handleChildClick = (item: string) => {
@@ -31,21 +34,24 @@ export const HorizontalMenu: React.FC<HorizontalMenuProps> = ({ routes }) => {
           )
         })}
       </div>
-      <div className="flex-1 text-[#c8c5be] p-1 flex items-center flex-row">
-        {selectedRoute && selectedRoute.children?.map((route, index) => {
-          return (
-            <Link
-              onClick={() => { handleChildClick(route.label) }}
-              className={`mr-7 p-1 rounded-md flex flex-col justify-center items-center cursor-pointer text-center text-xs mt-1 ${route.label === currentRoute && 'bg-[#414141] text-[#6394d9] shadow-lg'}`}
-              to={`${selectedRoute.path}/${route.path}`}
-              key={index}
-            >
-              <Icons index={index} />
-              <span className="pt-1">{route.label}</span>
-            </Link>
-          )
-        })}
-      </div>
+      {!fold
+      && (
+        <div className="flex-1 text-[#c8c5be] p-1 flex items-center flex-row">
+          {selectedRoute && selectedRoute.children?.map((route, index) => {
+            return (
+              <Link
+                onClick={() => { handleChildClick(route.label) }}
+                className={`mr-7 p-1 rounded-md flex flex-col justify-center items-center cursor-pointer text-center text-xs mt-1 ${route.label === currentRoute && 'bg-[#414141] text-[#6394d9] shadow-lg'}`}
+                to={`${selectedRoute.path}/${route.path}`}
+                key={index}
+              >
+                <Icons index={index} />
+                <span className="pt-1">{route.label}</span>
+              </Link>
+            )
+          })}
+        </div>
+      )}
     </>
   )
 }

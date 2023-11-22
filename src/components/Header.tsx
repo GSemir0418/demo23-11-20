@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { FaAngleDown, FaAngleUp } from 'react-icons/fa6'
 import { HorizontalMenu } from './HorizontalMenu'
 
 const FAKE_ROUTES = [
@@ -69,18 +70,27 @@ const FAKE_ROUTES = [
 
 interface Props {}
 export const Header: React.FC<Props> = () => {
+  const [fold, setFold] = useState(true)
+  const toggleFold = () => {
+    setFold(!fold)
+  }
   return (
-    <div className="bg-[#0f1c29] w-full h-28 flex-shrink-0 flex shadow-black shadow-md z-10 rounded-xl">
+    <div className={`bg-[#0f1c29] w-full h-${fold ? 12 : 28} flex-shrink-0 flex shadow-black shadow-md z-10 rounded-xl relative`}>
       <div className="text-[#c8c5be] text-4xl w-44 flex-shrink-0 font-bold flex items-center justify-center">
         A P S
         <span className=" text-sm translate-y-2 pl-2"> WEB</span>
       </div>
       <div className="flex-1 flex flex-col">
-        <HorizontalMenu routes={FAKE_ROUTES} />
+        <HorizontalMenu routes={FAKE_ROUTES} fold={fold} unfold={() => { setFold(false) }} />
       </div>
       <div className="w-40 flex-shrink-0 flex justify-center items-center">
         <div className="h-7 w-7 rounded-full bg-slate-50 mr-7" />
         <div className="h-7 w-7 rounded-full bg-slate-500" />
+      </div>
+      <div className=" absolute right-1 bottom-1 cursor-pointer" onClick={toggleFold}>
+        {fold
+          ? <FaAngleDown size="1.5rem" fill="#c8c5be" />
+          : <FaAngleUp size="1.5rem" fill="#c8c5be" />}
       </div>
     </div>
   )
