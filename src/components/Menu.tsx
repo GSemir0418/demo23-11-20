@@ -59,7 +59,7 @@ export const Menu: React.FC<MenuProps> = ({ routes, fold }) => {
   const [currentRoute, setCurrentRoute] = useState<string>('')
 
   return (
-    <ul className={`transition-all duration-300 ease-in-out ${fold ? 'opacity-100' : 'opacity-0'}`}>
+    <ul className={`transition-all duration-100 ease-in-out ${fold ? 'opacity-100' : 'opacity-0 hidden'}`}>
       {routes.map((route, index) => (<MenuItem key={index} item={route} level={0} father={route.path} currentRoute={currentRoute} setCurrentRoute={setCurrentRoute} />
       ))}
     </ul>

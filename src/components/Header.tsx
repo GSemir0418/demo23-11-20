@@ -77,7 +77,7 @@ export const Header: React.FC<Props> = () => {
     setFold(!fold)
   }
   return (
-    <div className={`bg-headerBg transition-all duration-300 ease-in-out w-full h-${fold ? 12 : 28} flex-shrink-0 flex shadow-black shadow-md z-10 rounded-xl relative`}>
+    <div className={`bg-headerBg transition-all duration-300 ease-in-out w-full ${fold ? 'h-14' : 'h-28'} flex-shrink-0 flex shadow-black shadow-md z-10 rounded-xl relative`}>
       <div className="text-headerText text-4xl w-44 flex-shrink-0 font-bold flex items-center justify-center">
         A P S
         <span className="text-sm translate-y-2 pl-2"> WEB</span>
@@ -86,9 +86,9 @@ export const Header: React.FC<Props> = () => {
         <HorizontalMenu routes={FAKE_ROUTES} fold={fold} unfold={() => { setFold(false) }} />
       </div>
       <div className="w-40 flex-shrink-0 flex justify-center items-center">
-        <div className="h-5 w-5 rounded-full bg-slate-50 mr-7" onClick={() => { setTheme('light') }} />
-        <div className="h-5 w-5 rounded-full bg-slate-500 mr-7" onClick={() => { setTheme('dark') }} />
-        <div className="h-5 w-5 rounded-full bg-[#d8d1c5] mr-7" onClick={() => { setTheme('warm') }} />
+        <div className="h-5 w-5 rounded-full bg-slate-50 mr-5" onClick={() => { setTheme('light') }} />
+        <div className="h-5 w-5 rounded-full bg-slate-500 mr-5" onClick={() => { setTheme('dark') }} />
+        <div className="h-5 w-5 rounded-full bg-[#d8d1c5] mr-5" onClick={() => { setTheme('warm') }} />
       </div>
       <div className="absolute right-1 bottom-1 cursor-pointer" onClick={toggleFold}>
         {fold

@@ -10,7 +10,7 @@ export const Sider: React.FC<Props> = () => {
     setFold(!fold)
   }
   return (
-    <div className={`bg-siderBg text-siderText shadow-[#707070] transition-all duration-300 ease-in-out w-${fold ? 44 : 10} h-full max-h-screen -mb-28 overflow-scroll p-2 relative`}>
+    <div className={`bg-siderBg text-siderText shadow-[#707070] transition-all duration-300 ease-in-out ${fold ? 'w-44' : 'w-12'} h-full max-h-screen -mb-28 overflow-y-scroll p-2 relative`}>
       <Menu routes={routes[0].children} fold={fold} />
       <div onClick={toggleFold} className="absolute bottom-1">
         {fold
