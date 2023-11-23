@@ -10,9 +10,9 @@ export const Sider: React.FC<Props> = () => {
     setFold(!fold)
   }
   return (
-    <div className={`bg-[#242525] text-[#c8c5be] shadow-[#707070] transition-all duration-300 ease-in-out w-${fold ? 44 : 10} h-full max-h-screen -mb-28 overflow-scroll p-2 relative`}>
+    <div className={`bg-siderBg text-siderText shadow-[#707070] transition-all duration-300 ease-in-out w-${fold ? 44 : 10} h-full max-h-screen -mb-28 overflow-scroll p-2 relative`}>
       <Menu routes={routes[0].children} fold={fold} />
-      <div onClick={toggleFold} className=" absolute bottom-1 bg-[#242525]">
+      <div onClick={toggleFold} className="absolute bottom-1">
         {fold
           ? <FaAngleLeft size="1.5rem" fill="#707070" />
           : <FaAngleRight size="1.5rem" fill="#707070" />}

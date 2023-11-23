@@ -21,25 +21,25 @@ export const HorizontalMenu: React.FC<HorizontalMenuProps> = ({ routes, fold, un
   }
   return (
     <>
-      <div className="flex-shrink-0 h-8 text-[#c8c5be] flex items-center p-1">
+      <div className="flex-shrink-0 h-8 text-headerText flex items-center p-1">
         {routes.length && routes.map((route, index) => {
           return (
             <span
               key={index}
               onClick={() => { handleClick(route) }}
-              className={`mr-7 cursor-pointer ${route.label === selectedRoute?.label && 'border-b-2 border-[#6394d9] text-[#6394d9]'}`}
+              className={`mr-7 cursor-pointer ${route.label === selectedRoute?.label && 'border-b-2 border-headerTopHigh text-headerTopHigh'}`}
             >
               {route.label}
             </span>
           )
         })}
       </div>
-      <div className={`flex-1 text-[#c8c5be] p-1 flex items-center flex-row transition-all duration-200 ease-in-out ${!fold ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`flex-1 text-headerText p-1 flex items-center flex-row transition-all duration-200 ease-in-out ${!fold ? 'opacity-100' : 'opacity-0'}`}>
         {selectedRoute && selectedRoute.children?.map((route, index) => {
           return (
             <Link
               onClick={() => { handleChildClick(route.label) }}
-              className={`mr-7 p-1 rounded-md flex flex-col justify-center items-center cursor-pointer text-center text-xs mt-1 ${route.label === currentRoute && 'bg-[#414141] text-[#6394d9] shadow-lg'}`}
+              className={`mr-7 p-1 rounded-md flex flex-col justify-center items-center cursor-pointer text-center text-xs mt-1 ${route.label === currentRoute && 'bg-headerBottomHigh text-headerTopHigh shadow-lg'}`}
               to={`${selectedRoute.path}/${route.path}`}
               key={index}
             >

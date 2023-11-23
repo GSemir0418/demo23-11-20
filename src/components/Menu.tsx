@@ -38,15 +38,15 @@ const MenuItem: React.FC<MenuItemProps> = ({ currentRoute, setCurrentRoute, item
             setCurrentRoute(item.label)
         }}
         className={`
-          ${(item.children && isSubMenuOpen) ? 'text-[#6394d9]' : ''} 
-          ${currentRoute === item.label ? 'bg-[#6394d961] text-[#6394d9] border-r-[#6394d9] border-r-2' : ''} 
+          ${(item.children && isSubMenuOpen) ? 'text-siderTextHigh' : ''} 
+          ${currentRoute === item.label ? 'bg-siderChildHigh text-siderTextHigh border-r-siderTextHigh border-r-2' : ''} 
           block p-1 rounded
         `}
       >
         <span className={`p-${level * 2}`}>{item.label}</span>
       </Link>
       {item.children && (
-        <ul className={`${isSubMenuOpen ? 'block' : 'hidden'} bg-[#202020]`}>
+        <ul className={`${isSubMenuOpen ? 'block' : 'hidden'} bg-siderChildBg`}>
           {item.children.map((child, index) => (<MenuItem key={index} item={child} level={level + 1} father={item.path} currentRoute={currentRoute} setCurrentRoute={setCurrentRoute} />
           ))}
         </ul>
