@@ -86,9 +86,10 @@ export const Header: React.FC<Props> = () => {
         <HorizontalMenu routes={FAKE_ROUTES} fold={fold} unfold={() => { setFold(false) }} />
       </div>
       <div className="w-40 flex-shrink-0 flex justify-center items-center">
-        <div className="h-5 w-5 rounded-full bg-slate-50 mr-5" onClick={() => { setTheme('light') }} />
-        <div className="h-5 w-5 rounded-full bg-slate-500 mr-5" onClick={() => { setTheme('dark') }} />
-        <div className="h-5 w-5 rounded-full bg-[#d8d1c5] mr-5" onClick={() => { setTheme('warm') }} />
+        <div className="h-5 w-5 rounded-full bg-slate-50 mr-3" onClick={() => { setTheme('light') }} />
+        <div className="h-5 w-5 rounded-full bg-slate-500 mr-3" onClick={() => { setTheme('dark') }} />
+        <div className="h-5 w-5 rounded-full bg-[#d8d1c5] mr-3" onClick={() => { setTheme('warm') }} />
+        <div className="h-5 w-5 rounded-full bg-[#dee8f0] mr-3" onClick={() => { setTheme('blue') }} />
       </div>
       <div className="absolute right-1 bottom-1 cursor-pointer" onClick={toggleFold}>
         {fold
